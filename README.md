@@ -20,6 +20,10 @@ Special thanks to [Kubernetes-sigs](https://https://github.com/kubernetes-sigs) 
 - If kubespray is run from non-root user account, correct privilege escalation method
     should be configured in the target servers. Then the ansible_become flag
     or command parameters --become or -b should be specified.
+- Get [Chocolatey](https://chocolatey.org/install) and use it to install vagrant:
+  ```bash
+  choco install vagrant
+  ```
 
 Hardware:
 These limits are safeguarded by Kubespray. Actual requirements for your workload can differ. For a sizing guide go to the [Building Large Clusters](https://kubernetes.io/docs/setup/cluster-large/#size-of-master-and-master-components) guide.
