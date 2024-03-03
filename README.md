@@ -35,7 +35,7 @@ These limits are safeguarded by Kubespray. Actual requirements for your workload
 
 
 ## Getting Started
-1. *Provision vagrant vms**
+1. **Provision vagrant VMs**
    ```bash
    vagrant up
    ```
