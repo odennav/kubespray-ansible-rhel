@@ -1,4 +1,4 @@
-## ![k8s](https://github.com/odennav/terraform-k8s-aws_ec2/blob/main/icons-k8s-color/icons8-kubernetes-96.png)  Deploy Kubernetes Cluster to CentOS Servers   
+# ![k8s](https://github.com/odennav/terraform-k8s-aws_ec2/blob/main/icons-k8s-color/icons8-kubernetes-96.png)  Deploy Kubernetes Cluster to CentOS Servers   
 
 This project automates the deployment of a kubernetes cluster using kubespray in centOS 8 and centOS 9 servers.
 Vagrant is used to provision VMs.
@@ -45,12 +45,12 @@ These limits are safeguarded by Kubespray. Actual requirements for your workload
    This new password will be required when public RSA keys are being transferred to kube nodes.
    ```bash
    sudo passwd
-   ``
+   ```
 
 4. **Change directory to /**
    ```bash
    cd /
-   ``
+   ```
 
 5. **Update yum package manager**
    ```bash
