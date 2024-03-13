@@ -1,6 +1,9 @@
-## ![k8s](https://github.com/odennav/terraform-k8s-aws_ec2/blob/main/icons-k8s-color/icons8-kubernetes-48.png)  Deployment of a Kubernetes Cluster in CentOS VMs   
+## ![k8s](https://github.com/odennav/terraform-k8s-aws_ec2/blob/main/icons-k8s-color/icons8-kubernetes-48.png)  Deployment of a Kubernetes Cluster with Kubespray using Ansible and Vagrant   
 
-This project automates the deployment of a kubernetes cluster with kubespray in centOS VMs.
+This project automates the deployment of a kubernetes cluster with kubespray in CentOS VMs.
+
+Ansible scripts used to automatically setup a kubernetes cluster.
+
 Vagrant is used to provision VMs.
 
 ## Special Credits
@@ -86,9 +89,10 @@ These limits are safeguarded by Kubespray. Actual requirements for your workload
    
 
 10. **Run kubespray-deploy.sh to deploy Kubernetes to node1, node2 and node3**
+   
    ```bash
-   chmod 770 kubespray-deploy.sh
-   bash kubespray-deploy.sh
+    chmod 770 kubespray-deploy.sh
+    bash kubespray-deploy.sh
    ```
    Executing this bash script creates a virtual environment, copies SSH keys, updates Ansible inventory, edits host inventory, installs kubectl and deploys Kubernetes cluster.
    Python script  builds inventory.
