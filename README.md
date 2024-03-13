@@ -71,7 +71,7 @@ These limits are safeguarded by Kubespray. Actual requirements for your workload
 
 7. **Clone this repo to / directory in control node**
    ```bash
-   git clone git@github.com:odennav/kubespray-ansible-centos.git
+   git clone git@github.com:odennav/kubespray-bash-ansible.git
    ```
 
 8. **Clone kubernetes-sigs kubespray repo to / directory in control node**
