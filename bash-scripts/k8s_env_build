@@ -1,11 +1,11 @@
 #!/bin/bash
 
-KUBESPRAYPATH="/kubespray-ansible-rhel/bash-scripts"                                        #Define KUBESPRAYPATH
+KUBESPRAYPATH="/kubespray-ansible-rhel/bash-scripts"        
 IPADDR_LIST_FILE="$KUBESPRAYPATH/ipaddr-list.txt"  
 INV_PARENT_DIR=/kubespray
 
 
-venvActvt() {                                                            #Create virtual environment and activate it.
+venvActvt() {                                                  #Create virtual environment and activate it.
     VENVDIR=kubespray-venv
     
     python3 -m venv ../$VENVDIR
@@ -20,15 +20,15 @@ venvActvt() {                                                            #Create
 
 
 pubKyAuth() {        
-    ssh-keygen -t rsa -b 4096                                              #Create ssh-key pair. Press enter for all prompts on location until keys are created.
+    ssh-keygen -t rsa -b 4096                                   #Create ssh-key pair. Press enter for all prompts on location until keys are created.
     
-    ls -la /root/.ssh/                                                     #Confirm private and public keys are created.
+    ls -la /root/.ssh/                                          #Confirm private and public keys are created.
 
-    while read -r name ip; do                                              #Iterate through ipaddr-list file and use ssh-copy-id.
+    while read -r name ip; do                                   #Iterate through ipaddr-list file and use ssh-copy-id.
         ip=$(echo "$ip" | tr -d '\r')
-        ssh-copy-id "root@$ip"                                             #Use ssh-copy-id utility to copy public keys to remote servers.
+        ssh-copy-id "root@$ip"                                  #Use ssh-copy-id utility to copy public keys to remote servers.
     
-    done < "$IPADDR_LIST_FILE"                                             #While loop reads from ipaddr_list_file.
+    done < "$IPADDR_LIST_FILE"                                  #While loop reads from ipaddr_list_file.
 }
 
 
@@ -48,7 +48,7 @@ ansblInv() {
         echo "Dependencies in requirements file installed"
     fi
 
-    cp -rfp $INV_PARENT_DIR/inventory/sample $INV_PARENT_DIR/inventory/mycluster                          #Copy `inventory/sample` as `inventory/mycluster`
+    cp -rfp $INV_PARENT_DIR/inventory/sample $INV_PARENT_DIR/inventory/mycluster                   #Copy `inventory/sample` as `inventory/mycluster`
 
     #Update Ansible inventory file with inventory builder
     declare -a IPS=()
@@ -96,8 +96,8 @@ echo "Transformation completed. Check $OUTPUT_FILE."
 
 
 instlKub() {
-    sudo snap install kubectl --classic                                   #Install kubectl, a command-line client for controlling Kubernetes clusters.
-    kubectl version                                                       #Confirm kubectl is installed
+    sudo snap install kubectl --classic                                  #Install kubectl, a command-line client for controlling Kubernetes clusters.
+    kubectl version                                                      #Confirm kubectl is installed
 }
 
 

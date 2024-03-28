@@ -28,15 +28,6 @@ Special thanks to [Kubernetes-sigs](https://https://github.com/kubernetes-sigs) 
   choco install vagrant
   ```
 
-Hardware:
-These limits are safeguarded by Kubespray. Actual requirements for your workload can differ. For a sizing guide go to the [Building Large Clusters](https://kubernetes.io/docs/setup/cluster-large/#size-of-master-and-master-components) guide.
-
-- Master
-  - Memory: 1500 MB
-- Node
-  - Memory: 1024 MB
-
-
 ## Getting Started
 1. **Provision vagrant VMs**
    ```bash
@@ -89,7 +80,8 @@ These limits are safeguarded by Kubespray. Actual requirements for your workload
    
 
 10. **Setup environment for deployment of kubespray cluster**
-    Executing this bash script creates a virtual environment, copies SSH keys, updates Ansible inventory, builds host inventory manifest and installs kubectl.
+
+    We'll create a virtual environment, copies SSH keys, updates Ansible inventory, builds host inventory manifest and installs kubectl.
     ```bash
     chmod 770 k8s-env-build.sh
     ./k8s-env-build.sh
@@ -97,7 +89,7 @@ These limits are safeguarded by Kubespray. Actual requirements for your workload
 
 
    
-11. **Run Ansible playbook to to deploy kubernetes cluster.
+11. **Run Ansible playbook to to deploy kubernetes cluster**
     
     Change directory to your local kubespray repo and execute cluster playbook
     ```bash
@@ -106,14 +98,14 @@ These limits are safeguarded by Kubespray. Actual requirements for your workload
     ```
 
 ## Reset Kubernetes Cluster
-To tear down the infrastructure created by vagrant.
+To remove current kubernetes cluster, run playbook as root user.
 Run this command in kubespray directory
   ```bash
   cd /kubespray
   ansible-playbook -i inventory/mycluster/hosts.yaml --become --become-user=root  reset.yml
   ```
 ## Destroying Resources(Optional)
-To tear down the VMs created by vagrant.
+To destroy the VMs created by vagrant.
   ```bash
   vagrant destroy
   ```
