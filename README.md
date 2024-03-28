@@ -45,32 +45,28 @@ Special thanks to [Kubernetes-sigs](https://https://github.com/kubernetes-sigs) 
    sudo passwd
    ```
 
-4. **Change directory to /**
+4. **Update yum package manager**
    ```bash
    cd /
-   ```
-
-5. **Update yum package manager**
-   ```bash
    yum update
    ```
 
-6. **Install git**
+5. **Install git**
    ```bash
    yum install git
    ```
 
-7. **Clone this repo to / directory in control node**
+6. **Clone this repo to / directory in control node**
    ```bash
    git clone git@github.com:odennav/kubespray-bash-ansible.git
    ```
 
-8. **Clone kubernetes-sigs kubespray repo to / directory in control node**
+7. **Clone kubernetes-sigs kubespray repo to / directory in control node**
    ```bash
    git clone git@github.com:kubernetes-sigs/kubespray.git
    ```
 
-9. **Run dependencies-install.sh in control node to install necessary dependencies**
+8. **Run dependencies-install.sh in control node to install necessary dependencies**
 
    Updating Yum, installing necessary dependencies, and ensuring Python compatibility.
    ```bash
@@ -79,7 +75,7 @@ Special thanks to [Kubernetes-sigs](https://https://github.com/kubernetes-sigs) 
    ```
    
 
-10. **Setup environment for deployment of kubespray cluster**
+9. **Setup environment for deployment of kubespray cluster**
 
     We'll create a virtual environment, copies SSH keys, updates Ansible inventory, builds host inventory manifest and installs kubectl.
     ```bash
@@ -89,7 +85,7 @@ Special thanks to [Kubernetes-sigs](https://https://github.com/kubernetes-sigs) 
 
 
    
-11. **Run Ansible playbook to to deploy kubernetes cluster**
+10. **Run Ansible playbook to to deploy kubernetes cluster**
     
     Change directory to your local kubespray repo and execute cluster playbook
     ```bash
