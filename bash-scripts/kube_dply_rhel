@@ -1,8 +1,8 @@
 #!/bin/bash
 
-KUBESPRAYPATH="/terraform-k8s-aws_ec2/bash-scripts"                                        #Define KUBESPRAYPATH
+KUBESPRAYPATH="/kubespray-ansible-rhel/bash-scripts"                                        #Define KUBESPRAYPATH
 IPADDR_LIST_FILE="$KUBESPRAYPATH/ipaddr-list.txt"  
-INV_PARENT_DIR=/terraform-k8s-aws_ec2/kubespray
+INV_PARENT_DIR=/kubespray
 
 
 venvActvt() {                                                            #Create virtual environment and activate it.
@@ -65,10 +65,10 @@ ansblInv() {
 
 hstInvEdt() {
 #Input and output file paths
-INPUT_FILE="/terraform-k8s-aws_ec2/kubespray/inventory/mycluster/hosts.yaml"
-INPUT_NULL_FILE="/terraform-k8s-aws_ec2/kubespray/inventory/mycluster/hosts-null.yaml"
-OUTPUT_FILE="/terraform-k8s-aws_ec2/kubespray/inventory/mycluster/hosts.yaml"
-TEMP_JSON_FILE="/terraform-k8s-aws_ec2/kubespray/inventory/mycluster/temp.json"
+INPUT_FILE="/kubespray/inventory/mycluster/hosts.yaml"
+INPUT_NULL_FILE="/kubespray/inventory/mycluster/hosts-null.yaml"
+OUTPUT_FILE="/kubespray/inventory/mycluster/hosts.yaml"
+TEMP_JSON_FILE="/kubespray/inventory/mycluster/temp.json"
 
 mv $INPUT_FILE $INPUT_NULL_FILE
 
@@ -94,14 +94,6 @@ rm "temp.yaml" "$TEMP_JSON_FILE" "$INPUT_NULL_FILE"    #Clean up temporary files
 echo "Transformation completed. Check $OUTPUT_FILE."
 }
 
-kubDply() {
-    if [ "$(pwd)" != "$KUBESPRAYPATH" ]; then
-        echo "Error: Current directory is not $KUBESPRAYPATH." >&2
-        exit 1
-    fi
-
-    ansible-playbook -i $INV_PARENT_DIR/inventory/mycluster/hosts.yaml --become --become-user=root $INV_PARENT_DIR/cluster.yml   #Deploy Kubespray with Ansible Playbook - run the playbook as root
-}
 
 instlKub() {
     sudo snap install kubectl --classic                                   #Install kubectl, a command-line client for controlling Kubernetes clusters.
@@ -118,7 +110,6 @@ venvActvt
 pubKyAuth
 ansblInv
 hstInvEdt
-kubDply
 instlKub
     
 else echo "Error: Current directory is not $KUBESPRAYPATH." >&2

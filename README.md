@@ -84,28 +84,33 @@ These limits are safeguarded by Kubespray. Actual requirements for your workload
    Updating Yum, installing necessary dependencies, and ensuring Python compatibility.
    ```bash
    chmod 770 dependencies-install
-   bash dependencies-install
+   ./dependencies-install
    ```
    
 
-10. **Run kubespray-deploy.sh to deploy Kubernetes to node1, node2 and node3**
-   
+10. **Setup environment for deployment of kubespray cluster**
+    Executing this bash script creates a virtual environment, copies SSH keys, updates Ansible inventory, builds host inventory manifest and installs kubectl.
     ```bash
-    chmod 770 kubespray-deploy.sh
-    bash kubespray-deploy.sh
+    chmod 770 k8s-env-build.sh
+    ./k8s-env-build.sh
     ```
-    Executing this bash script creates a virtual environment, copies SSH keys, updates Ansible inventory, edits host inventory, installs kubectl and deploys Kubernetes cluster.
-   
-    Python script  builds inventory.
-   
-    Ansible playbook also used to deploy kubernetes cluster from control node to other nodes.
 
+
+   
+11. **Run Ansible playbook to to deploy kubernetes cluster.
+    
+    Change directory to your local kubespray repo and execute cluster playbook
+    ```bash
+    cd /kubespray
+    ansible-playbook -i inventory/mycluster/hosts.yaml --become --become-user=root cluster.yml   
+    ```
 
 ## Reset Kubernetes Cluster
 To tear down the infrastructure created by vagrant.
 Run this command in kubespray directory
   ```bash
-  ansible-playbook -i /inventory/mycluster/hosts.yaml --become --become-user=root  reset.yml
+  cd /kubespray
+  ansible-playbook -i inventory/mycluster/hosts.yaml --become --become-user=root  reset.yml
   ```
 ## Destroying Resources(Optional)
 To tear down the VMs created by vagrant.
