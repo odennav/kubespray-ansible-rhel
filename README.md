@@ -6,10 +6,6 @@ Ansible scripts used to automatically setup a kubernetes cluster.
 
 Vagrant is used to provision VMs.
 
-## Special Credits
-
-Special thanks to [Kubernetes-sigs](https://https://github.com/kubernetes-sigs) for their amazing work.
-
 
 ## Requirements
 
@@ -105,6 +101,10 @@ To destroy the VMs created by vagrant.
   ```bash
   vagrant destroy
   ```
+
+## Special Credits
+
+Special thanks to [Kubernetes-sigs](https://https://github.com/kubernetes-sigs) for their amazing work.
 
 
 Enjoy!
