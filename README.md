@@ -71,9 +71,9 @@ Vagrant is used to provision VMs.
    ```
    
 
-9. **Setup environment for deployment of kubespray cluster**
+9. **Setup system for Ansible playbook execution**
 
-    We'll create a virtual environment, copies SSH keys, updates Ansible inventory, builds host inventory manifest and installs kubectl.
+    This bash script copies SSH keys, updates Ansible inventory, builds host inventory manifest and installs kubectl.
     ```bash
     chmod 770 k8s-env-build.sh
     ./k8s-env-build.sh
