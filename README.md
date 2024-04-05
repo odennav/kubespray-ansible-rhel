@@ -1,4 +1,4 @@
-## ![k8s](https://github.com/odennav/terraform-k8s-aws_ec2/blob/main/icons-k8s-color/icons8-kubernetes-48.png)  Deployment of a Kubernetes Cluster with Kubespray using Bash Scripts   
+## ![k8s](https://github.com/odennav/terraform-k8s-aws_ec2/blob/main/docs/icons8-kubernetes-48.png)  Deployment of a Kubernetes Cluster with Kubespray using Bash Scripts   
 
 This project automates the deployment of a kubernetes cluster with kubespray in CentOS VMs.
 
