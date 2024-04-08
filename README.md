@@ -19,7 +19,8 @@ Vagrant is utilized to provision VMs.
     should be configured in the target servers. Then the ansible_become flag
     or command parameters --become or -b should be specified.
 - Get [Chocolatey](https://chocolatey.org/install) and use it to install vagrant:
-  ```bash
+
+```bash
   choco install vagrant
   ```
 
