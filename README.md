@@ -1,10 +1,9 @@
-## ![k8s](https://github.com/odennav/terraform-k8s-aws_ec2/blob/main/docs/icons8-kubernetes-48.png)  Deployment of a Kubernetes Cluster with Kubespray using Bash Scripts   
+## ![k8s](https://github.com/odennav/terraform-k8s-aws_ec2/blob/main/docs/icons8-kubernetes-48.png)  Deployment of a Kubernetes Cluster with Kubespray   
 
 This project automates the deployment of a kubernetes cluster with kubespray in CentOS VMs.
 
-Ansible scripts used to automatically setup a kubernetes cluster.
-
-Vagrant is used to provision VMs.
+Ansible and Bash scripts used to setup a kubernetes cluster.
+Vagrant is utilized to provision VMs.
 
 
 ## Requirements
