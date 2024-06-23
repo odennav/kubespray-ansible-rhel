@@ -1,12 +1,13 @@
-## ![k8s](https://github.com/odennav/terraform-k8s-aws_ec2/blob/main/docs/icons8-kubernetes-48.png)  Deployment of a Kubernetes Cluster with Kubespray   
+# Deployment of a Kubernetes Cluster with Kubespray   
 
 This project automates the deployment of a kubernetes cluster with kubespray in Test environment.
 
-Ansible and Bash scripts are used to setup a kubernetes cluster.
+Ansible and bash scripts are used to setup a kubernetes cluster.
+
 Vagrant is utilized to provision VMs.
 
 
-## Requirements
+### Requirements
 
 - Minimum required version of Kubernetes is **`v1.27`**
 
@@ -20,7 +21,7 @@ Get [Chocolatey](https://chocolatey.org/install) and use it to install vagrant:
   choco install vagrant
   ```
 
-## Getting Started
+### Getting Started
 
 Provision vagrant VMs
 ```bash
@@ -83,7 +84,7 @@ cd /kubespray
 ansible-playbook -i inventory/mycluster/hosts.yaml --become --become-user=root cluster.yml   
 ```
 
-## Reset Kubernetes Cluster
+### Reset Kubernetes Cluster
 
 To remove current kubernetes cluster, run playbook as root user.
 
@@ -99,9 +100,10 @@ To destroy the VMs created by vagrant.
 vagrant destroy
 ```
 
-## Special Credits
+-----
 
-Special thanks to [Kubernetes-sigs](https://https://github.com/kubernetes-sigs) for their amazing work.
+special thanks to [Kubernetes-sigs](https://https://github.com/kubernetes-sigs) for their amazing work.
 
+-----
 
 Enjoy!
