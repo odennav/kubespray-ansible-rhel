@@ -1,0 +1,89 @@
+#!/bin/bash
+
+updateYum() {
+sudo yum update -y    #Update package manager
+sudo subscription-manager register
+sudo yum install epel-release -y    #Add EPEL(Extra packages for enterprise linux) to your system 
+sudo yum install snapd -y    #Installing snap
+sudo systemctl enable --now snapd.socket    #Enable main snap communication socket
+sudo ln -s /var/lib/snapd/snap /snap    #Enable classic snap support(create a symbolic link between /var/lib/snapd/snap and /snap:) 
+}
+
+
+#Get Python version and extract major and minor version numbers
+pyInstall() {                                                      
+python_version=$(python3 -V 2>&1 | awk '{print $2}')
+python_major=$(echo $python_version | cut -d. -f1)
+python_minor=$(echo $python_version | cut -d. -f2)
+
+if [ "$python_major" -eq 3 ] && [ "$python_minor" -ge 9 ] && [ "$python_minor" -le 11 ]; then    #Check if Python version is within the specified range
+    echo "Python version is compatible with Ansible version that kubespray supports"
+    sudo pip3 install --upgrade pip -y
+    sudo yum install python3.9 python3.9-devel -y   #Install Python 3.9 and development tools
+    sudo yum install python3.9-libs python3.9-pip python3.9-setuptools -y    # Install the Python 3.9 venv module
+    sudo pip3 install yq    #install yq package to parse and manipulate YAML files.
+    yq --version
+    sudo yum install jq -y
+    sudo yum install -y net-tools                                                 #Install net-tools
+else
+    echo "Python version is not in the range 3.9-3.11 and is incompatible with Ansible version that kubespray supports" 
+    echo "Upgrading to required python version"
+    sudo yum update -y    #Update yum, package manager for RPM-based operating systems.
+    sudo yum install python3.9 -y    #Install python 3.9
+    sudo alternatives --set python /usr/bin/python3.9    #Update the alternatives system to set Python 3.9 as the default.
+    sudo yum install python3-pip -y    #Install package installer for python3.
+    sudo pip3 install --upgrade pip -y
+    sudo yum install python3.9 python3.9-devel -y    #Install Python 3.9 and development tools
+    sudo yum install python3.9-libs python3.9-pip python3.9-setuptools -y   # Install the Python 3.9 venv module
+    sudo pip3 install yq     #install yq package to parse and manipulate YAML files.
+    yq --version
+    sudo yum install jq -y
+    sudo yum install -y net-tools                                                  #Install net-tools
+fi
+}
+
+#Checking python version
+pyVersionCheck() {                                                
+python_version=$(python3 -V 2>&1 | awk '{print $2}')
+python_major=$(echo $python_version | cut -d. -f1)
+python_minor=$(echo $python_version | cut -d. -f2)
+if [ "$python_major" -eq 3 ] && [ "$python_minor" -ge 9 ] && [ "$python_minor" -le 11 ]; then
+    echo "Python version is now compatible with Ansible version that kubespray supports"
+else
+   echo "Python version is not in the range 3.9-3.11. Please ensure correct version required is installed." >&2
+fi
+}
+
+
+rStrt() {
+sudo shutdown -r +1    #Restart System to ensure snap paths are updated correctly
+}
+
+
+#MAIN SCRIPT
+
+version=$(awk -F'[".]' '/VERSION_ID=/ {print $2}' /etc/os-release)
+id=$(awk -F'[".]' '/REDHAT_SUPPORT_PRODUCT_VERSION=/ {print $2}' /etc/os-release)
+
+
+if [ "$version" -ge 8 ] && [ "$version" -le 9 ]; then
+  echo "Begin function calls"
+  
+  if [ "$id" = "9" ]; then
+    echo "Update package manager"
+    updateYum
+    echo "Install Python dependencies for provisioning tasks"
+    pyInstall
+    echo "Confirming python version"
+    pyVersionCheck
+    echo "Installing python venv module"
+    #venvInstall
+    echo "Restarting to ensure snap paths updated correctly"
+    rStrt
+  fi  
+else
+  echo "Linux version not compatible" >&2
+fi
+
+
+
