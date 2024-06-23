@@ -1,6 +1,0 @@
-node1 xx.xx.xx.xx
-node2 xx.xx.xx.xx
-node3 xx.xx.xx.xx
-node4 xx.xx.xx.xx
-node5 xx.xx.xx.xx
-node6 xx.xx.xx.xx
